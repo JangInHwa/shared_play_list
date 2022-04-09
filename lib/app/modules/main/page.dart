@@ -4,7 +4,7 @@ import 'package:phosphor_flutter/phosphor_flutter.dart';
 class MainPage extends StatelessWidget {
   const MainPage({Key? key}) : super(key: key);
 
-  Widget _appbarArea() {
+  AppBar _appbarArea() {
     return AppBar(
       backgroundColor: Colors.transparent,
       elevation: 0,
@@ -25,15 +25,31 @@ class MainPage extends StatelessWidget {
     );
   }
 
+  Widget _actionsArea() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        IconButton(onPressed: () {}, icon: const Icon(PhosphorIcons.playlist, color: Colors.white)),
+        IconButton(onPressed: () {}, icon: const Icon(PhosphorIcons.plus, color: Colors.white)),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFF051311),
+      appBar: _appbarArea(),
       body: SafeArea(
-        child: Column(
-          children: [
-            _appbarArea(),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24),
+          child: Column(
+            children: [
+              const Spacer(),
+              _actionsArea(),
+              const SizedBox(height: 24),
+            ],
+          ),
         ),
       ),
     );
